@@ -20,8 +20,8 @@ class StoreTableViewController: UITableViewController {
         
         self.loadInitialStores()
     }
-    //MARK: call to services
     
+    //MARK: call to services
     func loadInitialStores(){
         let promise = StoreService.getStores()
         
@@ -84,6 +84,7 @@ class StoreTableViewController: UITableViewController {
         }
     }
     
+    //MARK: Helpers
     func showAlert(withTitle title:String, message: String) -> Void {
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)

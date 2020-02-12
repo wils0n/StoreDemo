@@ -31,7 +31,7 @@ class StoreService: NSObject {
                 switch response.result{
                     
                 case .failure(let error):
-                    
+                    // Network failure
                     if let err = error as? URLError, err.code == .notConnectedToInternet {
                         let _error = MYError(code: Constants.applicationCode.rawValue, description: error.localizedDescription, errorType: Constants.errorNetworkConnection.rawValue)
                         seal.fulfill((nil, _error))
@@ -42,6 +42,7 @@ class StoreService: NSObject {
                     }
                 case .success(_):
                     let data = response.data
+                    
                     do{
                         let dictionaryFromJSON = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
                         let pathStores = dictionaryFromJSON["stores"] as? NSArray

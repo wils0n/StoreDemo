@@ -11,7 +11,7 @@ import SDWebImage
 
 class StoreTableViewCell: UITableViewCell {
     
-    
+    //MARK: Properties
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var picture: UIImageView!
     @IBOutlet weak var phone: UILabel!
@@ -27,13 +27,15 @@ class StoreTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    //MARK: Fill data
     func fillCellStore(store:Store) {
         self.name.text = store.name
         self.address.text = store.address
-        
         self.phone.text = store.phone
         
-        self.picture.sd_setImage(with: URL(string: store.storeLogoURL!), placeholderImage: UIImage(named: "macys"))
+        if let storeURL = store.storeLogoURL {
+            self.picture.sd_setImage(with: URL(string: storeURL), placeholderImage: UIImage(named: "macys"))
+        }
         
     }
     

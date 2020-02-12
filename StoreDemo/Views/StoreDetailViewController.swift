@@ -9,6 +9,9 @@
 import UIKit
 
 class StoreDetailViewController: UIViewController {
+    
+    //MARK: Properties
+    
     @IBOutlet weak var picture: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var address: UILabel!
@@ -23,6 +26,7 @@ class StoreDetailViewController: UIViewController {
         
     }
     
+    //MARK: Fill data
     func initView(){
         self.name.text = store?.name
         self.city.text = store?.city
@@ -34,6 +38,7 @@ class StoreDetailViewController: UIViewController {
         
     }
     
+    //MARK: Actions
     @IBAction func closeVC(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
